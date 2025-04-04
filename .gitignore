@@ -1,0 +1,5 @@
+devbox.lock
+kind-config.yaml
+.venv
+.devbox
+bin/
