@@ -1,0 +1,7 @@
+targets:
+  - name: traefik
+    args:
+      environmentType: common
+    context: kind-kind
+
+discriminator: kluctl-{{ target.name }}
