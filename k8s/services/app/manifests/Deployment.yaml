@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deployment
+  namespace: myapp-{{ sharedVars.env  }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      my: app
+  template:
+    metadata:
+      name: myapp-pod
+      namespace: myapp-{{ sharedVars.env  }} 
+      labels:
+        my: app
+    spec:
+      containers:
+        - name: myapp-container
+          image: localhost:5001/fast_api_test:{{ sharedVars.env }}
+          ports:
+            - containerPort: 8081
+              protocol: TCP

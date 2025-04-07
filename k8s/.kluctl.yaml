@@ -1,0 +1,24 @@
+targets:
+  - name: dev
+    args:
+      environment: dev
+      environmentType: non-prod
+    context: kind-kind
+
+  - name: staging
+    args:
+      environment: staging
+      environmentType: non-prod
+    context: kind-kind
+
+  - name: production
+    args:
+      environment: production
+      environmentType: prod
+    context: kind-kind
+
+args:
+  - name: environment
+  - name: environmentType
+
+discriminator: kluctl-{{ target.name }}
