@@ -1,0 +1,18 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: myapp-route
+  namespace: myapp-{{ sharedVars.env  }}
+spec:
+  entryPoints:
+    - web
+  routes:
+    - kind: Rule
+      match: Host(`{{ sharedVars.hostName }}`) && PathPrefix(`/api/app`)
+      middlewares:
+        - name: myapp-api-prefixes
+      services:
+        - kind: Service
+          name: myapp-svc
+          port: 8081
+          scheme: http

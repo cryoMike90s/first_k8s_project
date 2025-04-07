@@ -2,4 +2,5 @@ devbox.lock
 kind-config.yaml
 .venv
 .devbox
+.helm-charts
 bin/
